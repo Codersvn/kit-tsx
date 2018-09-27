@@ -1,6 +1,6 @@
 /node_modules
 /dist
-.env
+/lib
 .DS_Store
 /.vscode
 /.scripts

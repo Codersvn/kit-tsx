@@ -12,7 +12,6 @@ module.exports = merge(common, {
         }
       }
     }),
-    new webpack.NormalModuleReplacementPlugin(/environment\.ts/, './environment.prod.ts'),
-    new webpack.NormalModuleReplacementPlugin(/_font\.scss/, './_font_prod.scss')
+    new webpack.NormalModuleReplacementPlugin(/environment\.ts/, './environment.prod.ts')
   ]
 });

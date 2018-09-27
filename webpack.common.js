@@ -12,31 +12,37 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  entry: { app: ['./js/src/app.tsx', './scss/app.scss'] },
+  entry: { app: ['./src/app.tsx', './scss/app.scss'] },
   module: {
     rules: [
       {
         test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules|dist|lib/
       },
-      { test: /\.tsx$/, loader: 'awesome-typescript-loader' },
+      {
+        test: /\.tsx$/,
+        use: 'awesome-typescript-loader',
+        exclude: /node_modules|dist|lib/
+      },
       {
         test: /\.css$/,
         use: extractPlugin.extract({
           use: [`css-loader`]
-        })
+        }),
+        exclude: /node_modules|dist|lib/
       },
       {
         test: /\.scss$/,
         use: extractPlugin.extract({
           use: [`css-loader`, `sass-loader`]
-        })
+        }),
+        exclude: /node_modules|dist|lib/
       },
       {
         test: /\.html$/,
-        exclude: /node_modules/,
-        use: { loader: 'raw-loader' }
+        use: { loader: 'raw-loader' },
+        exclude: /node_modules|dist|lib/
       },
       {
         test: /\.(jpg|png|gif|jpeg|svg|bmp)$/,
